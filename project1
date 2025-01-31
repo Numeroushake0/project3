@@ -1,16 +1,14 @@
-from datetime import datetime
+from datetime import datetime, date
 
-def get_days_from_today(date):
+def get_days_from_today(date_str):
     try:
-        input_date = datetime.strptime(date, '%Y-%m-%d')
-        
-        today = datetime.today()
-        
-        delta = input_date - today
-        
-        return delta.days
-    
-    except ValueError:
-        return "Невірний формат дати. Будь ласка змініть цого на такий формат 'РРРР-ММ-ДД'"
+        input_date = datetime.strptime(date_str, '%Y-%m-%d').date()  
+        today = date.today()  
 
-print(get_days_from_today("2021-10-09")) 
+        delta = input_date - today
+        return delta.days
+
+    except ValueError:
+        return "Невірний формат дати. Будь ласка, використовуйте формат 'РРРР-ММ-ДД'"
+
+print(get_days_from_today("2023-01-31")) 

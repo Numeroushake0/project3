@@ -17,3 +17,5 @@ def get_cats_info(path):
         print(f"Помилка при відкритті файлу {path}.")
     
     return cats                    
+
+#r"C:\Users\Bogdan\Desktop\cats.txt"

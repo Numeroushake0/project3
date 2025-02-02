@@ -6,7 +6,7 @@ def parse_input(user_input):
 
 def add_contact(args, contacts):
     if len(args) != 2:
-        return "Неправильні дані, використовуйте формат: додати [ім'я] [номер]"
+        return "Неправильні дані, використовуйте наданий вам формат: додати [ім'я] [номер]"
     name, phone = args
     contacts[name] = phone
     return "Контакт додано."
@@ -14,7 +14,7 @@ def add_contact(args, contacts):
 
 def change_contact(args, contacts):
     if len(args) != 2:
-        return "Неправильні дані, використовуйте формат: змінити [ім'я] [новий номер]"
+        return "Неправильні дані, використовуйте наданий вам формат: змінити [ім'я] [новий номер]"
     name, phone = args
     if name in contacts:
         contacts[name] = phone
@@ -24,7 +24,7 @@ def change_contact(args, contacts):
 
 def show_phone(args, contacts):
     if len(args) != 1:
-        return "Неправильні дані, використовуйте формат: номер [ім'я]"
+        return "Неправильні дані, використовуйте наданий вам формат: номер [ім'я]"
     name = args[0]
     return contacts.get(name, "Контакт не знайдено.")
 
@@ -46,7 +46,7 @@ def main():
             print("Дякуємо за використання бота! До побачення!")
             break
         elif command == "вітаю":
-            print("Як я можу вам допомогти?")
+            print("Чим я можу вам допомогти?")
         elif command == "додати":
             print(add_contact(args, contacts))
         elif command == "змінити":
@@ -56,7 +56,7 @@ def main():
         elif command == "всі":
             print(show_all(contacts))
         else:
-            print("Невідома команда. Використовуйте: додати, змінити, номер, всі, закрити, вихід.")
+            print("Невідома команда. Використайте оду з перелічених команд: додати, змінити, номер, всі, закрити, вихід.")
 
 
 if __name__ == "__main__":

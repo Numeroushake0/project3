@@ -6,57 +6,57 @@ def parse_input(user_input):
 
 def add_contact(args, contacts):
     if len(args) != 2:
-        return "Неправильні дані, використовуйте наданий вам формат: додати [ім'я] [номер]"
+        return "Invalid data, use the format: add [name] [number]"
     name, phone = args
     contacts[name] = phone
-    return "Контакт додано."
+    return "Contact added."
 
 
 def change_contact(args, contacts):
     if len(args) != 2:
-        return "Неправильні дані, використовуйте наданий вам формат: змінити [ім'я] [новий номер]"
+        return "Invalid data, use the format: change [name] [new number]"
     name, phone = args
     if name in contacts:
         contacts[name] = phone
-        return "Номер оновлено."
-    return "Контакт не знайдено."
+        return "Number updated."
+    return "Contact not found."
 
 
 def show_phone(args, contacts):
     if len(args) != 1:
-        return "Неправильні дані, використовуйте наданий вам формат: номер [ім'я]"
+        return "Invalid data, use the format: phone [name]"
     name = args[0]
-    return contacts.get(name, "Контакт не знайдено.")
+    return contacts.get(name, "Contact not found.")
 
 
 def show_all(contacts):
     if not contacts:
-        return "Список контактів порожній."
+        return "The contact list is empty."
     return "\n".join(f"{name}: {phone}" for name, phone in contacts.items())
 
 
 def main():
     contacts = {}
-    print("Вітаємо вас у нашому боті-асистенті!")
+    print("How can I help you?")
     while True:
-        user_input = input("Введіть вашу команду: ")
+        user_input = input("Enter your command: ")
         command, args = parse_input(user_input)
 
-        if command in ["закрити", "вихід"]:
-            print("Дякуємо за використання бота! До побачення!")
+        if command in ["close", "exit"]:
+            print("Thank you for using the bot! Goodbye!")
             break
-        elif command == "вітаю":
-            print("Чим я можу вам допомогти?")
-        elif command == "додати":
+        elif command == "hello":
+            print("How can I help you?")
+        elif command == "add":
             print(add_contact(args, contacts))
-        elif command == "змінити":
+        elif command == "change":
             print(change_contact(args, contacts))
-        elif command == "номер":
+        elif command == "phone":
             print(show_phone(args, contacts))
-        elif command == "всі":
+        elif command == "all":
             print(show_all(contacts))
         else:
-            print("Невідома команда. Використайте оду з перелічених команд: додати, змінити, номер, всі, закрити, вихід.")
+            print("Unknown command. Use one of the following commands: add, change, phone, all, close, exit.")
 
 
 if __name__ == "__main__":
